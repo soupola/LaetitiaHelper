@@ -3,6 +3,9 @@ package loader.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import loader.tool.FileLoader;
+
+import java.io.File;
 
 public class LoadCsvViewController {
 
@@ -11,7 +14,9 @@ public class LoadCsvViewController {
 
     @FXML
     void browse(ActionEvent event) {
-
+        File file = FileLoader.pickFile();
+        if(file != null)
+            csvPathTa.setText(file.getAbsolutePath());
     }
 
     @FXML
