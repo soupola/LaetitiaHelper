@@ -1,4 +1,4 @@
-package sample;
+package be.gib;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
