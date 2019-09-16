@@ -3,7 +3,6 @@ package be.gib.helper.core.beans;
 import be.gib.helper.core.enums.EnumShowType;
 
 import java.time.Duration;
-import java.util.Date;
 
 public class Show {
     private String title;
@@ -11,15 +10,13 @@ public class Show {
     private boolean recurent;
     private String country;
     private EnumShowType type;
-    private Date date;
 
-    public Show(String title, Duration duration, boolean recurent, String country, EnumShowType type, Date date) {
+    public Show(String title, Duration duration, boolean recurent, String country, EnumShowType type) {
         this.title = title;
         this.duration = duration;
         this.recurent = recurent;
         this.country = country;
         this.type = type;
-        this.date = date;
     }
 
     public String getCountry() {
@@ -28,14 +25,6 @@ public class Show {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getTitle() {
@@ -78,7 +67,6 @@ public class Show {
                 ", recurent=" + recurent +
                 ", country='" + country + '\'' +
                 ", type=" + type +
-                ", date=" + date +
                 '}';
     }
 }

@@ -1,15 +1,14 @@
 package be.gib.helper.loader.controller;
 
 import be.gib.helper.core.beans.Show;
+import be.gib.helper.loader.file.FileLoader;
+import be.gib.helper.loader.file.impl.ExcelFileProcessor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import be.gib.helper.loader.file.FileLoader;
-import be.gib.helper.loader.file.FileProcessor;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class LoadCsvViewController {
@@ -28,15 +27,14 @@ public class LoadCsvViewController {
     void generate(ActionEvent event) {
         if (!csvPathTa.getText().trim().isEmpty()) {
             try {
-                ArrayList<Show> shows = FileProcessor.generateShowsFromFile(csvPathTa.getText());
+                ExcelFileProcessor processor = new ExcelFileProcessor();
+                ArrayList<Show> shows = processor.generateShowsFromFile(csvPathTa.getText());
+                assert shows != null;
                 for (Show s : shows) {
                     System.out.println(s.toString());
                 }
-
             } catch (IOException e) {
                 System.out.println("Unable to load file from disk");
-            } catch (ParseException e) {
-                    System.out.println("unable to parse data");
             }
         }
     }
