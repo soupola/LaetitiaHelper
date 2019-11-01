@@ -1,6 +1,6 @@
 package be.gib.helper.loader.controller;
 
-import be.gib.helper.core.beans.Show;
+import be.gib.helper.core.Scheduler;
 import be.gib.helper.loader.file.FileLoader;
 import be.gib.helper.loader.file.impl.ExcelFileProcessor;
 import javafx.event.ActionEvent;
@@ -28,9 +28,9 @@ public class LoadCsvViewController {
         if (!csvPathTa.getText().trim().isEmpty()) {
             try {
                 ExcelFileProcessor processor = new ExcelFileProcessor();
-                ArrayList<Show> shows = processor.generateShowsFromFile(csvPathTa.getText());
-                assert shows != null;
-                for (Show s : shows) {
+                ArrayList<Scheduler> schedulers = processor.extractFromFile(csvPathTa.getText());
+                assert schedulers != null;
+                for (Scheduler s : schedulers) {
                     System.out.println(s.toString());
                 }
             } catch (IOException e) {

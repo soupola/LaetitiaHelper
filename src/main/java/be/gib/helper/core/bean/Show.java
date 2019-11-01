@@ -1,4 +1,4 @@
-package be.gib.helper.core.beans;
+package be.gib.helper.core.bean;
 
 import be.gib.helper.core.enums.EnumShowType;
 
@@ -7,14 +7,12 @@ import java.time.Duration;
 public class Show {
     private String title;
     private Duration duration;
-    private boolean recurent;
     private String country;
     private EnumShowType type;
 
-    public Show(String title, Duration duration, boolean recurent, String country, EnumShowType type) {
+    public Show(String title, Duration duration, String country, EnumShowType type) {
         this.title = title;
         this.duration = duration;
-        this.recurent = recurent;
         this.country = country;
         this.type = type;
     }
@@ -43,14 +41,6 @@ public class Show {
         this.duration = duration;
     }
 
-    public boolean isRecurent() {
-        return recurent;
-    }
-
-    public void setRecurent(boolean recurent) {
-        this.recurent = recurent;
-    }
-
     public EnumShowType getType() {
         return type;
     }
@@ -64,7 +54,6 @@ public class Show {
         return "Show{" +
                 "title='" + title + '\'' +
                 ", duration=" + duration +
-                ", recurent=" + recurent +
                 ", country='" + country + '\'' +
                 ", type=" + type +
                 '}';
