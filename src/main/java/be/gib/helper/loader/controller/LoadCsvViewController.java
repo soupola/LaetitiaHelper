@@ -39,6 +39,7 @@ public class LoadCsvViewController extends MainController {
     @FXML
     void initialize() {
         assert csvPathTa != null : "fx:id=\"csvPathTa\" was not injected: check your FXML file 'Untitled'.";
+        csvPathTa.setText("/home/gib/laetitiaAvecDate.xlsx");
         setLoaderController(this);
     }
 }
