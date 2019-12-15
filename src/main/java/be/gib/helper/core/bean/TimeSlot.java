@@ -2,7 +2,6 @@ package be.gib.helper.core.bean;
 
 import org.apache.commons.lang3.time.DateUtils;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,11 +13,11 @@ public class TimeSlot {
         this.show = show;
     }
 
-    public Date getEndDate(Date startDate, Duration duration) {
-        if (startDate == null || duration == null) {
+    public Date getEndDate(Date startDate) {
+        if (startDate == null || this.show == null) {
             return null;
         }
-        return DateUtils.addMinutes(startDate, (int) duration.toMinutes());
+        return DateUtils.addMinutes(startDate, (int) show.getDuration().toMinutes());
     }
 
     public void addStartDate(Date startDate) {

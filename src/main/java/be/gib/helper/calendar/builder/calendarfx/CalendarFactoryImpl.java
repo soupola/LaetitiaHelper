@@ -26,7 +26,7 @@ public class CalendarFactoryImpl implements be.gib.helper.calendar.builder.Calen
             Show show = timeSlot.getShow();
             Duration duration = show.getDuration();
             for (Date date : timeSlot.getStartDates()) {
-                Instant endInstant = timeSlot.getEndDate(date, show.getDuration()).toInstant();
+                Instant endInstant = timeSlot.getEndDate(date).toInstant();
                 Instant startInstant = date.toInstant();
                 Entry<?> entryAt = calendarView.createEntryAt(
                         ZonedDateTime.ofInstant(startInstant, systemDefault()),

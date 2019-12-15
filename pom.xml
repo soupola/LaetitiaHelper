@@ -46,12 +46,27 @@
             <artifactId>view</artifactId>
             <version>8.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-labs -->
+        <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-agenda -->
         <dependency>
             <groupId>org.jfxtras</groupId>
-            <artifactId>jfxtras-labs</artifactId>
+            <artifactId>jfxtras-agenda</artifactId>
+            <version>8.0-r1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-all -->
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-all</artifactId>
             <version>8.0-r4</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-window -->
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jfxtras-window</artifactId>
+            <version>8.0-r6</version>
+        </dependency>
+
+
+
 
     </dependencies>
 
