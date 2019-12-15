@@ -1,4 +1,4 @@
-package be.gib.helper.calendar.controller;
+package be.gib.helper.calendarFx.controller;
 
 import be.gib.helper.core.Scheduler;
 import be.gib.helper.core.bean.Show;

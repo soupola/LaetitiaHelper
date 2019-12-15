@@ -1,4 +1,4 @@
-package be.gib.helper.calendar.controller;
+package be.gib.helper.calendarFx.controller;
 
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.AllDayView;

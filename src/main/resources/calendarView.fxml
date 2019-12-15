@@ -4,4 +4,5 @@
 <TabPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainCalendar" maxHeight="-Infinity" maxWidth="-Infinity"
          minHeight="-Infinity"
          minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE"
-         xmlns="http://javafx.com/javafx/11.0.1" fx:controller="be.gib.helper.calendar.controller.CalendarController"/>
+         xmlns="http://javafx.com/javafx/11.0.1"
+         fx:controller="be.gib.helper.calendarFx.controller.CalendarController"/>
