@@ -51,15 +51,18 @@ public class ExcelFileProcessor extends FileProcessor {
                 }
                 try {
                     String[] split = sb.toString().split(";");
-                    String[] showInfo = Arrays.copyOfRange(split, 0, 4);
-                    String[] showDate = Arrays.copyOfRange(split, 4, split.length - 1);
-                    Show show = generateShow(showInfo);
-                    TimeSlot timeSlot = new TimeSlot(show);
-                    for (String date : showDate) {
-                        timeSlot.addStartDate(DATE_FORMAT.parse(date));
+                    if (split.length > 4) {
+                        String[] showInfo = Arrays.copyOfRange(split, 0, 4);
+                        String[] showDate = Arrays.copyOfRange(split, 4, split.length);
+                        Show show = generateShow(showInfo);
+                        TimeSlot timeSlot = new TimeSlot(show);
+                        for (String date : showDate) {
+                            timeSlot.addStartDate(DATE_FORMAT.parse(date));
+                        }
+                        timeSlots.add(timeSlot);
                     }
-                    timeSlots.add(timeSlot);
                 } catch (ParseException e) {
+                    System.out.println(sb.toString());
                     e.printStackTrace();
                 }
             }

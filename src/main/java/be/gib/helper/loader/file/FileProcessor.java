@@ -17,7 +17,7 @@ public abstract class FileProcessor {
 
     protected Show generateShow(String[] extract) {
         if (extract.length == 4) {
-            long timeInMinute = Integer.parseInt(extract[FileProcessorConstant.DURATION]);
+            long timeInMinute = (long) Double.parseDouble(extract[FileProcessorConstant.DURATION]);
             String title = extract[FileProcessorConstant.NAME];
             Duration duration = Duration.ofMinutes(timeInMinute);
             String country = extract[FileProcessorConstant.NAT];

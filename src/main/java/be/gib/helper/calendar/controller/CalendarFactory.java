@@ -21,11 +21,10 @@ public class CalendarFactory {
     public static CalendarView getLoadedCalendar(List<Scheduler> schedulers) {
         CalendarView calendarView = new CalendarView();
         CalendarSource myCalendarSource = new CalendarSource("Programmes");
-
         for (Scheduler scheduler : schedulers) {
             Calendar calendar = new Calendar();
             calendar.setName(scheduler.getName());
-            calendar.setStyle(Calendar.Style.STYLE1);
+            calendar.setStyle(Calendar.Style.STYLE2);
             loadEmissions(calendarView, calendar, scheduler);
             myCalendarSource.getCalendars().addAll(calendar);
         }
