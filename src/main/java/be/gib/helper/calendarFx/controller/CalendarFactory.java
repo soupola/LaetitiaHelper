@@ -8,7 +8,9 @@ import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
 
-import java.time.*;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -31,7 +33,8 @@ public class CalendarFactory {
         calendarView.getCalendarSources().addAll(myCalendarSource);
 
 //       force showing week
-        calendarView.setDate(LocalDate.ofInstant(Objects.requireNonNull(getFirstShow(myCalendarSource)), systemDefault()));
+//        LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
+        calendarView.setDate(Objects.requireNonNull(getFirstShow(myCalendarSource)).atZone(systemDefault()).toLocalDate());
         calendarView.showWeekPage();
 
         return calendarView;
@@ -48,7 +51,7 @@ public class CalendarFactory {
                         ZonedDateTime.ofInstant(startInstant, systemDefault()),
                         calendar);
                 entryAt.setTitle(show.getTitle());
-                entryAt.changeEndTime(LocalTime.ofInstant(endInstant, systemDefault()));
+                entryAt.changeEndTime(endInstant.atZone(systemDefault()).toLocalTime());
             }
         }
     }

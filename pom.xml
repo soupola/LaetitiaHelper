@@ -10,11 +10,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>12</javafx.version>
+        <maven.compiler.release>8</maven.compiler.release>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -39,13 +38,13 @@
         <dependency>
             <groupId>com.calendarfx</groupId>
             <artifactId>calendar</artifactId>
-            <version>11.8.3</version>
+            <version>8.6.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.calendarfx/view -->
         <dependency>
             <groupId>com.calendarfx</groupId>
             <artifactId>view</artifactId>
-            <version>11.8.3</version>
+            <version>8.6.1</version>
         </dependency>
 
     </dependencies>
