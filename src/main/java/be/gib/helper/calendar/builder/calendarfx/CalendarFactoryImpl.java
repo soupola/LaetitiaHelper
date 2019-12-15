@@ -1,4 +1,4 @@
-package be.gib.helper.calendarFx.controller;
+package be.gib.helper.calendar.builder.calendarfx;
 
 import be.gib.helper.core.Scheduler;
 import be.gib.helper.core.bean.Show;
@@ -7,6 +7,7 @@ import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;
+import javafx.scene.Node;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -18,27 +19,7 @@ import java.util.Objects;
 import static java.time.ZoneId.systemDefault;
 
 
-public class CalendarFactory {
-
-    public static CalendarView getLoadedCalendar(List<Scheduler> schedulers) {
-        CalendarView calendarView = new CalendarView();
-        CalendarSource myCalendarSource = new CalendarSource("Programmes");
-        for (Scheduler scheduler : schedulers) {
-            Calendar calendar = new Calendar();
-            calendar.setName(scheduler.getName());
-            calendar.setStyle(Calendar.Style.STYLE2);
-            loadEmissions(calendarView, calendar, scheduler);
-            myCalendarSource.getCalendars().addAll(calendar);
-        }
-        calendarView.getCalendarSources().addAll(myCalendarSource);
-
-//       force showing week
-//        LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
-        calendarView.setDate(Objects.requireNonNull(getFirstShow(myCalendarSource)).atZone(systemDefault()).toLocalDate());
-        calendarView.showWeekPage();
-
-        return calendarView;
-    }
+public class CalendarFactoryImpl implements be.gib.helper.calendar.builder.CalendarFactory {
 
     private static void loadEmissions(CalendarView calendarView, Calendar calendar, Scheduler scheduler) {
         for (TimeSlot timeSlot : scheduler.getTimeSlots()) {
@@ -64,5 +45,26 @@ public class CalendarFactory {
             return calendar.getEarliestTimeUsed();
         }
         return null;
+    }
+
+    @Override
+    public Node getLoadedCalendar(List<Scheduler> schedulers) {
+        CalendarView calendarView = new CalendarView();
+        CalendarSource myCalendarSource = new CalendarSource("Programmes");
+        for (Scheduler scheduler : schedulers) {
+            Calendar calendar = new Calendar();
+            calendar.setName(scheduler.getName());
+            calendar.setStyle(Calendar.Style.STYLE2);
+            loadEmissions(calendarView, calendar, scheduler);
+            myCalendarSource.getCalendars().addAll(calendar);
+        }
+        calendarView.getCalendarSources().addAll(myCalendarSource);
+
+//       force showing week
+//        LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
+        calendarView.setDate(Objects.requireNonNull(getFirstShow(myCalendarSource)).atZone(systemDefault()).toLocalDate());
+        calendarView.showWeekPage();
+
+        return calendarView;
     }
 }

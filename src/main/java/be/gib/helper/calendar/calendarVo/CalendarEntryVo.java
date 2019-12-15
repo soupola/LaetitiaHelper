@@ -1,4 +1,4 @@
-package be.gib.helper.calendarFx.calendarVo;
+package be.gib.helper.calendar.calendarVo;
 
 import be.gib.helper.core.enums.EnumShowType;
 

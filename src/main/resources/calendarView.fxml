@@ -5,4 +5,4 @@
          minHeight="-Infinity"
          minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE"
          xmlns="http://javafx.com/javafx/11.0.1"
-         fx:controller="be.gib.helper.calendarFx.controller.CalendarController"/>
+         fx:controller="be.gib.helper.calendar.controller.CalendarController"/>
