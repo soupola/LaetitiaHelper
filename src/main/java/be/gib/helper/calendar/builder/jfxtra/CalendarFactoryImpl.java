@@ -7,17 +7,14 @@ import be.gib.helper.core.bean.TimeSlot;
 import javafx.scene.Node;
 import jfxtras.scene.control.agenda.Agenda;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class CalendarFactoryImpl implements CalendarFactory {
     @Override
     public Node getLoadedCalendar(List<Scheduler> schedulers) {
         Agenda agenda = new Agenda();
         agenda.appointments().addAll(loadAppointments(schedulers));
-
+        agenda.getDisplayedCalendar().setTime(Objects.requireNonNull(findFirstDate(schedulers.get(0))));
         return agenda;
     }
 
@@ -50,5 +47,19 @@ public class CalendarFactoryImpl implements CalendarFactory {
 
     private Calendar getCalendarDate(TimeSlot timeSlot, Date startDate) {
         return getCalendarDate(timeSlot.getEndDate(startDate));
+    }
+
+    private Date findFirstDate(Scheduler scheduler) {
+        TimeSlot timeSlot = scheduler.getTimeSlots()
+                .stream()
+                .findFirst()
+                .orElse(null);
+        if (timeSlot != null) {
+            return timeSlot.getStartDates()
+                    .stream()
+                    .findFirst()
+                    .orElse(null);
+        }
+        return null;
     }
 }
