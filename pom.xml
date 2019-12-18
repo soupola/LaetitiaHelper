@@ -13,7 +13,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>8</maven.compiler.release>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
@@ -39,12 +38,14 @@
             <groupId>com.calendarfx</groupId>
             <artifactId>calendar</artifactId>
             <version>8.6.1</version>
+            <type>pom</type>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.calendarfx/view -->
         <dependency>
             <groupId>com.calendarfx</groupId>
             <artifactId>view</artifactId>
-            <version>8.6.1-laetitia.SNAPSHOT</version>
+            <version>8.6.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jfxtras/jfxtras-agenda -->
         <dependency>
@@ -76,9 +77,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                </configuration>
             </plugin>
         </plugins>
     </build>
