@@ -54,7 +54,7 @@ public class CalendarFactoryImpl implements be.gib.helper.calendar.builder.Calen
         for (Scheduler scheduler : schedulers) {
             Calendar calendar = new Calendar();
             calendar.setName(scheduler.getName());
-            calendar.setStyle(Calendar.Style.STYLE2);
+            calendar.setStyle(Calendar.Style.STYLE7);
             loadEmissions(calendarView, calendar, scheduler);
             myCalendarSource.getCalendars().addAll(calendar);
         }
