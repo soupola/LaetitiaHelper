@@ -1,6 +1,6 @@
 package be.gib.helper;
 
-import be.gib.helper.core.MainController;
+import be.gib.helper.core.controller.MainController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

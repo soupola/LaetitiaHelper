@@ -1,6 +1,6 @@
 package be.gib.helper.loader.file.impl;
 
-import be.gib.helper.core.Scheduler;
+import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.Show;
 import be.gib.helper.core.bean.TimeSlot;
 import be.gib.helper.loader.file.FileProcessor;
@@ -45,6 +45,7 @@ public class ExcelFileProcessor extends FileProcessor {
             for (Row currentRow : currentSheet) {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < currentRow.getPhysicalNumberOfCells(); i++) {
+                    System.out.println(currentSheet.getSheetName() + " : " + currentRow.getCell(i).toString());
                     currentRow.getCell(i).setCellType(CellType.STRING);
                     sb.append(currentRow.getCell(i).getStringCellValue());
                     sb.append(";");

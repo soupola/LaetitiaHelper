@@ -1,4 +1,4 @@
-package be.gib.helper.core;
+package be.gib.helper.core.bean;
 
 import be.gib.helper.core.bean.TimeSlot;
 

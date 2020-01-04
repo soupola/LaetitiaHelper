@@ -1,6 +1,6 @@
 package be.gib.helper.calendar.builder.calendarfx;
 
-import be.gib.helper.core.Scheduler;
+import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.Show;
 import be.gib.helper.core.bean.TimeSlot;
 import com.calendarfx.model.Calendar;

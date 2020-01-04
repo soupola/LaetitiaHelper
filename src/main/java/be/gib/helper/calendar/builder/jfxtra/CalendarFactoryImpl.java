@@ -1,7 +1,7 @@
 package be.gib.helper.calendar.builder.jfxtra;
 
 import be.gib.helper.calendar.builder.CalendarFactory;
-import be.gib.helper.core.Scheduler;
+import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.Show;
 import be.gib.helper.core.bean.TimeSlot;
 import javafx.scene.Node;

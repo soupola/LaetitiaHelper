@@ -1,6 +1,7 @@
-package be.gib.helper.core;
+package be.gib.helper.core.controller;
 
 import be.gib.helper.calendar.controller.CalendarController;
+import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.loader.controller.LoadCsvViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

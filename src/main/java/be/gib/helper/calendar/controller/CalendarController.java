@@ -2,7 +2,7 @@ package be.gib.helper.calendar.controller;
 
 import be.gib.helper.calendar.builder.CalendarFactory;
 import be.gib.helper.calendar.builder.calendarfx.CalendarFactoryImpl;
-import be.gib.helper.core.MainController;
+import be.gib.helper.core.controller.MainController;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;

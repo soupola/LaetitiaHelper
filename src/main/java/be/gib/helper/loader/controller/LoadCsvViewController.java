@@ -1,6 +1,6 @@
 package be.gib.helper.loader.controller;
 
-import be.gib.helper.core.MainController;
+import be.gib.helper.core.controller.MainController;
 import be.gib.helper.loader.file.FileLoader;
 import be.gib.helper.loader.file.impl.ExcelFileProcessor;
 import javafx.event.ActionEvent;
@@ -39,7 +39,7 @@ public class LoadCsvViewController extends MainController {
     @FXML
     void initialize() {
         assert csvPathTa != null : "fx:id=\"csvPathTa\" was not injected: check your FXML file 'Untitled'.";
-        csvPathTa.setText("E:\\Download\\correctFormatNomdidju.xlsx");
+        csvPathTa.setText("/Users/gillesbeaucarne/Documents/transform/originFormate.xlsx");
         setLoaderController(this);
     }
 }
