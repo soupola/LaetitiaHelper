@@ -6,10 +6,16 @@ import javafx.scene.Node;
 public class NbePieBuilder extends AbstractPieBuilder {
     @Override
     public Node buildGraph(Scheduler scheduler) {
-        return super.generatePieChart(
-                super.loadFullCategoryMap(
+
+        return super.generatePieChartCategory(
+                super.loadCategoryMap(
                         scheduler.getTimeSlots(),
                         scheduler.getTotalTime()),
                 scheduler.getName());
+    }
+
+    @Override
+    Scheduler getCustomScheduler(Scheduler scheduler) {
+        return null;
     }
 }

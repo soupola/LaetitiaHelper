@@ -3,17 +3,18 @@ package be.gib.helper.core.bean;
 import be.gib.helper.core.bean.TimeSlot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scheduler {
-    private ArrayList<TimeSlot> timeSlots;
+    private List<TimeSlot> timeSlots;
     private String name;
 
-    public Scheduler(ArrayList<TimeSlot> timeSlots, String name) {
+    public Scheduler(List<TimeSlot> timeSlots, String name) {
         this.timeSlots = timeSlots;
         this.name = name;
     }
 
-    public ArrayList<TimeSlot> getTimeSlots() {
+    public List<TimeSlot> getTimeSlots() {
         return timeSlots;
     }
 
