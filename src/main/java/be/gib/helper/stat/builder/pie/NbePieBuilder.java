@@ -21,7 +21,7 @@ public class NbePieBuilder extends AbstractPieBuilder {
         return super.generatePieChartCategory(
                 super.loadCategoryMap(
                         filteredScheduler.getTimeSlots(),
-                        filteredScheduler.getTotalTime()),
+                        merge.getTotalTime()),
                 "Pourcentage d'émissions belges néerlandophone pour toute chaines néerlandophone confondue");
     }
 
@@ -31,6 +31,6 @@ public class NbePieBuilder extends AbstractPieBuilder {
                 .filter(p -> p.getShow().getCountry() == EnumOrigine.NBE)
                 .collect(Collectors.toList());
         Scheduler filteredScheduler = new Scheduler(slots, scheduler.getChaine());
-        return scheduler;
+        return filteredScheduler;
     }
 }
