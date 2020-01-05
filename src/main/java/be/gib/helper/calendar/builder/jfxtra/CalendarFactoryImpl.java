@@ -31,7 +31,7 @@ public class CalendarFactoryImpl implements CalendarFactory {
                     app.setEndTime(end);
                     app.setAppointmentGroup(new Agenda.AppointmentGroupImpl().withStyleClass("group1"));
                     app.setDescription(show.getTitle());
-                    app.setSummary(show.getCountry());
+                    app.setSummary(show.getCountry().getName());
                     appointments.add(app);
                 }
             }

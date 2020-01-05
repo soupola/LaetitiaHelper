@@ -1,5 +1,6 @@
 package be.gib.helper.core.bean;
 
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.core.enums.EnumShowType;
 
 import java.time.Duration;
@@ -7,21 +8,21 @@ import java.time.Duration;
 public class Show {
     private String title;
     private Duration duration;
-    private String country;
+    private EnumOrigine country;
     private EnumShowType type;
 
-    public Show(String title, Duration duration, String country, EnumShowType type) {
+    public Show(String title, Duration duration, EnumOrigine country, EnumShowType type) {
         this.title = title;
         this.duration = duration;
         this.country = country;
         this.type = type;
     }
 
-    public String getCountry() {
+    public EnumOrigine getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(EnumOrigine country) {
         this.country = country;
     }
 

@@ -1,17 +1,17 @@
 package be.gib.helper.core.bean;
 
-import be.gib.helper.core.bean.TimeSlot;
+import be.gib.helper.core.enums.EnumChaine;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Scheduler {
     private List<TimeSlot> timeSlots;
-    private String name;
+    private EnumChaine chaine;
 
-    public Scheduler(List<TimeSlot> timeSlots, String name) {
+    public Scheduler(List<TimeSlot> timeSlots, EnumChaine chaine) {
         this.timeSlots = timeSlots;
-        this.name = name;
+        this.chaine = chaine;
     }
 
     public List<TimeSlot> getTimeSlots() {
@@ -26,16 +26,15 @@ public class Scheduler {
     public String toString() {
         return "Scheduler{" +
                 "timeSlots=" + timeSlots +
-                ", name='" + name + '\'' +
                 '}';
     }
 
-    public String getName() {
-        return name;
+    public EnumChaine getChaine() {
+        return chaine;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setChaine(EnumChaine chaine) {
+        this.chaine = chaine;
     }
 
     public double getTotalTime() {

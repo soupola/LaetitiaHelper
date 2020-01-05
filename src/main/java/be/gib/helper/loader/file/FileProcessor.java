@@ -2,6 +2,7 @@ package be.gib.helper.loader.file;
 
 import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.Show;
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.core.enums.EnumShowType;
 import be.gib.helper.loader.constant.FileProcessorConstant;
 
@@ -21,8 +22,9 @@ public abstract class FileProcessor {
             String title = extract[FileProcessorConstant.NAME];
             Duration duration = Duration.ofMinutes(timeInMinute);
             String country = extract[FileProcessorConstant.NAT];
+            EnumOrigine origine = EnumOrigine.match(country);
             EnumShowType type = EnumShowType.match(extract[FileProcessorConstant.TYPE]);
-            return new Show(title, duration, country, type);
+            return new Show(title, duration, origine, type);
         }
         return null;
     }

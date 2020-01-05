@@ -3,6 +3,7 @@ package be.gib.helper.loader.file.impl;
 import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.Show;
 import be.gib.helper.core.bean.TimeSlot;
+import be.gib.helper.core.enums.EnumChaine;
 import be.gib.helper.loader.file.FileProcessor;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -67,7 +68,7 @@ public class ExcelFileProcessor extends FileProcessor {
                     e.printStackTrace();
                 }
             }
-            schedulers.add(new Scheduler(timeSlots, currentSheet.getSheetName()));
+            schedulers.add(new Scheduler(timeSlots, EnumChaine.match(currentSheet.getSheetName())));
         }
         return schedulers;
     }

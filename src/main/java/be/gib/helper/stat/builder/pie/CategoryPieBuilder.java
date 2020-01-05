@@ -3,6 +3,8 @@ package be.gib.helper.stat.builder.pie;
 import be.gib.helper.core.bean.Scheduler;
 import javafx.scene.Node;
 
+import java.util.List;
+
 public class CategoryPieBuilder extends AbstractPieBuilder {
     @Override
     Scheduler getCustomScheduler(Scheduler scheduler) {
@@ -15,6 +17,11 @@ public class CategoryPieBuilder extends AbstractPieBuilder {
                 super.loadCategoryMap(
                         scheduler.getTimeSlots(),
                         scheduler.getTotalTime()),
-                scheduler.getName());
+                scheduler.getChaine().getName());
+    }
+
+    @Override
+    public Node buildGraph(List<Scheduler> schedulers) {
+        return null;
     }
 }

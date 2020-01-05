@@ -10,8 +10,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainController {
     private static LoadCsvViewController loaderController;
@@ -52,15 +50,5 @@ public class MainController {
 
     protected void setSchedulers(ArrayList<Scheduler> schedulers) {
         MainController.schedulers = schedulers;
-    }
-
-    protected List<String> getSchedulersNames() {
-        List<String> names = new ArrayList<>();
-        if (!schedulers.isEmpty()) {
-            names = schedulers.stream()
-                    .map(Scheduler::getName)
-                    .collect(Collectors.toList());
-        }
-        return names;
     }
 }
