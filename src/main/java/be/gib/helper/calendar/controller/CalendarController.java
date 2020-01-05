@@ -32,7 +32,7 @@ public class CalendarController extends MainController {
             //Load graphs
             Map<String, Node> graphs = new HashMap<>();
             for (Scheduler scheduler : getSchedulers()) {
-                graphs.put("Category for " + scheduler.getName(), ChartFactory.generateNbeChart(scheduler));
+                graphs.put("Category for " + scheduler.getName(), ChartFactory.generateCategoryChart(scheduler));
             }
 
             for (Map.Entry<String, Node> entry : graphs.entrySet()) {
