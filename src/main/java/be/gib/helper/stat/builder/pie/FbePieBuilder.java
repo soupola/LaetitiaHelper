@@ -20,16 +20,17 @@ public class FbePieBuilder extends AbstractPieBuilder {
 
     @Override
     public Node buildGraph(Scheduler scheduler) {
-        Scheduler filteredScheduler = getCustomScheduler(scheduler);
-        return super.generatePieChartType(
-                super.loadFullTypeMap(
-                        filteredScheduler.getTimeSlots(),
-                        filteredScheduler.getTotalTime()),
-                scheduler.getChaine().getName());
+        return null;
     }
 
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
-        return null;
+        Scheduler merge = super.merge(schedulers);
+        Scheduler filteredScheduler = getCustomScheduler(merge);
+        return super.generatePieChartCategory(
+                super.loadCategoryMap(
+                        filteredScheduler.getTimeSlots(),
+                        filteredScheduler.getTotalTime()),
+                "Pourcentage d'émissions belges francophone pour toute chaines francophone confondue");
     }
 }

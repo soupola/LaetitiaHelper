@@ -54,7 +54,7 @@ public enum EnumOrigine {
 
     public static EnumOrigine match(String name) {
         for (EnumOrigine e : EnumOrigine.values()) {
-            if (e.name.equalsIgnoreCase(name))
+            if (e.code.equalsIgnoreCase(name))
                 return e;
         }
         return null;

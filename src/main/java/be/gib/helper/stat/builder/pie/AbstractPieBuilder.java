@@ -11,7 +11,10 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractPieBuilder implements StatBuilder {
     protected Map<EnumShowCategory, Double> fullCategoryMap;
@@ -121,4 +124,17 @@ public abstract class AbstractPieBuilder implements StatBuilder {
         map.entrySet().removeIf(p -> p.getValue() == 0);
         return map;
     }
+
+    protected Scheduler merge(List<Scheduler> schedulers) {
+        if (schedulers == null) {
+            return null;
+        }
+        ArrayList<TimeSlot> slots = new ArrayList<>();
+        for (Scheduler scheduler : schedulers) {
+            slots.addAll(scheduler.getTimeSlots());
+        }
+        Scheduler newScheduler = new Scheduler(slots, null);
+        return newScheduler;
+    }
+
 }

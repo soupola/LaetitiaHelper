@@ -31,7 +31,7 @@ public enum EnumChaine {
 
     public static EnumChaine match(String name) {
         for (EnumChaine e : EnumChaine.values()) {
-            if (e.name.equalsIgnoreCase(name))
+            if (e.code.equalsIgnoreCase(name))
                 return e;
         }
         return null;

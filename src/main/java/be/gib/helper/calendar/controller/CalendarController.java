@@ -2,6 +2,7 @@ package be.gib.helper.calendar.controller;
 
 import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.controller.MainController;
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.stat.builder.ChartFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -10,6 +11,7 @@ import javafx.scene.control.TabPane;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CalendarController extends MainController {
 
@@ -29,6 +31,15 @@ public class CalendarController extends MainController {
             for (Scheduler scheduler : getSchedulers()) {
                 graphs.put("Category for " + scheduler.getChaine().getName(), ChartFactory.generateCategoryChart(scheduler));
             }
+            graphs.put("FBE", ChartFactory.generateFbeChart(
+                    getSchedulers().stream()
+                            .filter(p -> p.getChaine().getOrigine() == EnumOrigine.FBE)
+                            .collect(Collectors.toList())));
+
+            graphs.put("NBE", ChartFactory.generateNbeChart(
+                    getSchedulers().stream()
+                            .filter(p -> p.getChaine().getOrigine() == EnumOrigine.NBE)
+                            .collect(Collectors.toList())));
 
             for (Map.Entry<String, Node> entry : graphs.entrySet()) {
                 Tab tab = new Tab();
