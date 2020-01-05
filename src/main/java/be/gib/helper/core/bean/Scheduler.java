@@ -36,4 +36,12 @@ public class Scheduler {
     public void setName(String name) {
         this.name = name;
     }
+
+    public double getTotalTime() {
+        double duration = 0;
+        for (TimeSlot slot : timeSlots) {
+            duration += slot.getTotalTime();
+        }
+        return duration;
+    }
 }

@@ -32,6 +32,9 @@ public class TimeSlot {
                 '}';
     }
 
+    public double getTotalTime() {
+        return (show.getDuration().getSeconds() / 60) * startDates.size();
+    }
     public ArrayList<Date> getStartDates() {
         return startDates;
     }
