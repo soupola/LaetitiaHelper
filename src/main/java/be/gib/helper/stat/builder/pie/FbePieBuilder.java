@@ -5,6 +5,7 @@ import be.gib.helper.core.bean.TimeSlot;
 import be.gib.helper.core.enums.EnumOrigine;
 import javafx.scene.Node;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,11 +27,11 @@ public class FbePieBuilder extends AbstractPieBuilder {
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
         Scheduler merge = super.merge(schedulers);
-        Scheduler filteredScheduler = getCustomScheduler(merge);
-        return super.generatePieChartCategory(
-                super.loadCategoryMap(
-                        filteredScheduler.getTimeSlots(),
-                        merge.getTotalTime()),
+        List<EnumOrigine> origines = Arrays.asList(EnumOrigine.FBE, EnumOrigine.FR);
+        return super.generateOriginPieChart(
+                super.loadMapOrigine(merge.getTimeSlots(),
+                        merge.getTotalTime(),
+                        origines),
                 "Pourcentage d'émissions belges francophone pour toute chaines francophone confondue");
     }
 }

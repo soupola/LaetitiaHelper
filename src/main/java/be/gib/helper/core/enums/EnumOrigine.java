@@ -35,7 +35,8 @@ public enum EnumOrigine {
     US_KE_IN("", "US/KE/IN"),
     US_UK("", "US/UK"),
     US_UK_FR("", "US/UK/FR"),
-    US_UK_GE("", "US/UK/GE");
+    US_UK_GE("", "US/UK/GE"),
+    RESTE("Autres", "");
     private String name;
     private String code;
 

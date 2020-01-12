@@ -2,6 +2,7 @@ package be.gib.helper.stat.builder.pie;
 
 import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.TimeSlot;
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.core.enums.EnumShowCategory;
 import be.gib.helper.core.enums.EnumShowType;
 import be.gib.helper.stat.builder.StatBuilder;
@@ -11,10 +12,9 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static be.gib.helper.core.enums.EnumOrigine.RESTE;
 
 public abstract class AbstractPieBuilder implements StatBuilder {
     protected Map<EnumShowCategory, Double> fullCategoryMap;
@@ -22,6 +22,28 @@ public abstract class AbstractPieBuilder implements StatBuilder {
     abstract Scheduler getCustomScheduler(Scheduler scheduler);
 
     private static final DecimalFormat DF = new DecimalFormat("#.###");
+
+    protected Map<EnumOrigine, Double> loadMapOrigine(List<TimeSlot> slots, Double totalTime, List<EnumOrigine> origines) {
+        if (slots == null) {
+            return null;
+        }
+        Map<EnumOrigine, Double> map = new HashMap<>();
+        map.put(RESTE, 0D);
+        for (EnumOrigine origine : origines) {
+            map.put(origine, 0D);
+        }
+        for (TimeSlot slot : slots) {
+            EnumOrigine origine = slot.getShow().getCountry();
+            if (origines.contains(origine)) {
+                double old = map.get(origine);
+                map.put(origine, old + slot.getTotalTime());
+            } else {
+                double old = map.get(RESTE);
+                map.put(RESTE, old + slot.getTotalTime());
+            }
+        }
+        return convertToPercentOrigine(totalTime, map);
+    }
 
     protected Map<EnumShowType, Double> loadFullTypeMap(List<TimeSlot> slots, double totalTime) {
         if (slots == null) {
@@ -76,6 +98,18 @@ public abstract class AbstractPieBuilder implements StatBuilder {
         return generatePieChart(data, graphName);
     }
 
+    protected PieChart generateOriginPieChart(Map<EnumOrigine, Double> map, String graphName) {
+        if (map == null) {
+            return null;
+        }
+        ArrayList<PieChart.Data> data = new ArrayList<>();
+        for (Map.Entry<EnumOrigine, Double> entry : map.entrySet()) {
+            data.add(new PieChart.Data(entry.getKey().getName() + " : " + DF.format(entry.getValue()) + " %",
+                    entry.getValue()));
+        }
+        return generatePieChart(data, graphName);
+    }
+
     private PieChart generatePieChart(List<PieChart.Data> data, String name) {
         ObservableList<PieChart.Data> displayData = FXCollections.observableList(data);
         PieChart chart = new PieChart(displayData);
@@ -111,6 +145,13 @@ public abstract class AbstractPieBuilder implements StatBuilder {
 
     private Map<EnumShowCategory, Double> convertToPercentCategory(Double totalTime, Map<EnumShowCategory, Double> map) {
         for (Map.Entry<EnumShowCategory, Double> entry : map.entrySet()) {
+            map.put(entry.getKey(), computePercent(entry.getValue(), totalTime));
+        }
+        return map;
+    }
+
+    private Map<EnumOrigine, Double> convertToPercentOrigine(Double totalTime, Map<EnumOrigine, Double> map) {
+        for (Map.Entry<EnumOrigine, Double> entry : map.entrySet()) {
             map.put(entry.getKey(), computePercent(entry.getValue(), totalTime));
         }
         return map;
