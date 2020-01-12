@@ -1,9 +1,7 @@
 package be.gib.helper.stat.builder;
 
 import be.gib.helper.core.bean.Scheduler;
-import be.gib.helper.stat.builder.pie.CategoryPieBuilder;
-import be.gib.helper.stat.builder.pie.FbePieBuilder;
-import be.gib.helper.stat.builder.pie.NbePieBuilder;
+import be.gib.helper.stat.builder.pie.*;
 import javafx.scene.Node;
 
 import java.util.List;
@@ -22,5 +20,30 @@ public class ChartFactory {
     public static Node generateCategoryChart(Scheduler scheduler) {
         CategoryPieBuilder builder = new CategoryPieBuilder();
         return builder.buildGraph(scheduler);
+    }
+
+    public static Node generateCategoryChartWithoutVulling(Scheduler scheduler) {
+        CategoryPieBuilder builder = new CategoryPieBuilder();
+        return builder.buildGraphNoVulling(scheduler);
+    }
+
+    public static Node fbeOnFbeCategoryChart(Scheduler scheduler) {
+        FrGlobalCategoryOrigin builder = new FrGlobalCategoryOrigin();
+        return builder.buildGraph(scheduler);
+    }
+
+    public static Node fbeOnTotalCategoryChart(Scheduler scheduler) {
+        FrGlobalCategoryOrigin builder = new FrGlobalCategoryOrigin();
+        return builder.buildGlobalGraph(scheduler);
+    }
+
+    public static Node nbeOnNbeCategoryChart(Scheduler scheduler) {
+        NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
+        return builder.buildGraph(scheduler);
+    }
+
+    public static Node nbeOnTotalCategoryChart(Scheduler scheduler) {
+        NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
+        return builder.buildGlobalGraph(scheduler);
     }
 }

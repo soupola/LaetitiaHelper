@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TabPane?>
-<TabPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainCalendar" maxHeight="-Infinity" maxWidth="-Infinity"
-         minHeight="-Infinity"
-         minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE"
-         xmlns="http://javafx.com/javafx/11.0.1"
-         fx:controller="be.gib.helper.calendar.controller.CalendarController"/>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="be.gib.helper.calendar.controller.CalendarController">
+    <children>
+        <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <panes>
+                <TitledPane animated="false" text="een">
+                    <content>
+                        <TabPane fx:id="eenTabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" text="vtm">
+                    <content>
+                        <TabPane fx:id="vtmTabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" text="vier">
+                    <content>
+                        <TabPane fx:id="vierTbPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" layoutX="10.0" layoutY="65.0" text="la une">
+                    <content>
+                        <TabPane fx:id="uneTabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" layoutX="10.0" layoutY="92.0" text="rtl">
+                    <content>
+                        <TabPane fx:id="rtlTabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" layoutX="10.0" layoutY="118.0" text="ab3">
+                    <content>
+                        <TabPane fx:id="ab3TabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+                <TitledPane text="General">
+                    <content>
+                        <TabPane fx:id="commonTabPane" tabClosingPolicy="UNAVAILABLE"/>
+                    </content>
+                </TitledPane>
+            </panes>
+        </Accordion>
+    </children>
+</AnchorPane>
