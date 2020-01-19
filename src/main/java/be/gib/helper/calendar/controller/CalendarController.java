@@ -125,6 +125,8 @@ public class CalendarController extends MainController {
         ArrayList<Tab> tabs = new ArrayList<>();
         tabs.add(generateTab("Catégorie belge Trois chaines francophone",
                 ChartFactory.generateFbeChart(schedulers)));
+        tabs.add(generateTab("Catégorie des émissions francophone",
+                ChartFactory.fbeAllChannelCategory(schedulers)));
         return tabs;
     }
 
@@ -132,6 +134,8 @@ public class CalendarController extends MainController {
         ArrayList<Tab> tabs = new ArrayList<>();
         tabs.add(generateTab("Catégorie belge Trois chaines néerlandophone",
                 ChartFactory.generateNbeChart(schedulers)));
+        tabs.add(generateTab("Catégorie des émissions néerlandophone",
+                ChartFactory.nbeAllChannelCategory(schedulers)));
         return tabs;
     }
 

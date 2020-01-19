@@ -46,4 +46,14 @@ public class ChartFactory {
         NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
         return builder.buildGlobalGraph(scheduler);
     }
+
+    public static Node nbeAllChannelCategory(List<Scheduler> schedulers) {
+        NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
+        return builder.buildGraph(schedulers);
+    }
+
+    public static Node fbeAllChannelCategory(List<Scheduler> schedulers) {
+        FrGlobalCategoryOrigin builder = new FrGlobalCategoryOrigin();
+        return builder.buildGraph(schedulers);
+    }
 }

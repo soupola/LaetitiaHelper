@@ -9,7 +9,7 @@ public enum EnumOrigine {
     DE("Allemand", "DE"),
     DE_AT("", "DE/AT"),
     ES("Epagnol", "ES"),
-    FBE("Belge francophone", "FBE"),
+    FBE("FBE", "FBE"),
     FBE_FR("Franco-Belge francophone", "FBE/FR"),
     FR("Francais", "FR"),
     FR_CA("Franco-Canadien", "FR/CA"),
@@ -18,9 +18,9 @@ public enum EnumOrigine {
     FR_US("Franco-Americain", "FR/US"),
     GE("", "GE"),
     IT("Italien", "IT"),
-    NBE("Belge néerlandophone", "NBE"),
+    NBE("NBE", "NBE"),
     NBE_NL("", "NBE/NL"),
-    NL("Hollendais", "NL"),
+    NL("NL", "NL"),
     NZ("", "NZ"),
     ONBEKEND("", "Onbekend"),
     SZ("", "SZ"),
@@ -36,7 +36,7 @@ public enum EnumOrigine {
     US_UK("", "US/UK"),
     US_UK_FR("", "US/UK/FR"),
     US_UK_GE("", "US/UK/GE"),
-    RESTE("Autres", "");
+    RESTE("Ander", "");
     private String name;
     private String code;
 
