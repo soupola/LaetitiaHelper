@@ -45,11 +45,11 @@ public abstract class AbstractPieBuilder implements StatBuilder {
         return convertToPercentOrigine(totalTime, map);
     }
 
-    protected Map<EnumShowType, Double> loadFullTypeMap(List<TimeSlot> slots, double totalTime) {
+    protected Map<EnumShowType, Double> loadSubTypeMap(List<EnumShowType> types, List<TimeSlot> slots, double totalTime) {
         if (slots == null) {
             return null;
         }
-        Map<EnumShowType, Double> fullTypeMap = initializeFullTypeMap();
+        Map<EnumShowType, Double> fullTypeMap = initializeFullTypeMap(types);
         for (TimeSlot slot : slots) {
             Double previous = fullTypeMap.get(slot.getShow().getType());
             fullTypeMap.put(slot.getShow().getType(), previous + slot.getTotalTime());
@@ -59,11 +59,23 @@ public abstract class AbstractPieBuilder implements StatBuilder {
         return fullTypeMap;
     }
 
-    protected Map<EnumShowCategory, Double> loadCategoryMap(List<TimeSlot> slots, double totalTime) {
+    protected Map<EnumShowCategory, Double> loadCustomCategoryMap(List<EnumShowCategory> categories, List<TimeSlot> slots, double totalTime) {
         if (slots == null) {
             return null;
         }
-        Map<EnumShowCategory, Double> map = initializeFullCategoryMap();
+        Map<EnumShowCategory, Double> map = initializeCategoryMap(categories);
+        return loadCategoryMap(map, slots, totalTime);
+    }
+
+    protected Map<EnumShowCategory, Double> loadFullCategoryMap(List<TimeSlot> slots, double totalTime) {
+        if (slots == null) {
+            return null;
+        }
+        Map<EnumShowCategory, Double> map = initializeCategoryMap(Arrays.asList(EnumShowCategory.values()));
+        return loadCategoryMap(map, slots, totalTime);
+    }
+
+    protected Map<EnumShowCategory, Double> loadCategoryMap(Map<EnumShowCategory, Double> map, List<TimeSlot> slots, double totalTime) {
         for (TimeSlot slot : slots) {
             EnumShowCategory category = EnumShowCategory.getCategory(slot.getShow().getType());
             Double previous = map.get(category);
@@ -120,17 +132,17 @@ public abstract class AbstractPieBuilder implements StatBuilder {
         return chart;
     }
 
-    private Map<EnumShowType, Double> initializeFullTypeMap() {
+    private Map<EnumShowType, Double> initializeFullTypeMap(List<EnumShowType> types) {
         Map<EnumShowType, Double> map = new LinkedHashMap<>();
-        for (EnumShowType type : EnumShowType.values()) {
+        for (EnumShowType type : types) {
             map.put(type, 0D);
         }
         return map;
     }
 
-    private Map<EnumShowCategory, Double> initializeFullCategoryMap() {
+    private Map<EnumShowCategory, Double> initializeCategoryMap(List<EnumShowCategory> categories) {
         Map<EnumShowCategory, Double> map = new LinkedHashMap<>();
-        for (EnumShowCategory type : EnumShowCategory.values()) {
+        for (EnumShowCategory type : categories) {
             map.put(type, 0D);
         }
         return map;

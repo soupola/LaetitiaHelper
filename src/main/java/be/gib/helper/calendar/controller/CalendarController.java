@@ -107,6 +107,8 @@ public class CalendarController extends MainController {
                 ChartFactory.nbeOnTotalCategoryChart(current)));
         list.add(generateTab("Nationnalité par chaine",
                 ChartFactory.generateNbeChart(Arrays.asList(current))));
+        list.add(generateTab("Catégorie entertainment exploded",
+                ChartFactory.entertainmentExploded(current)));
         return list;
     }
 
@@ -118,6 +120,8 @@ public class CalendarController extends MainController {
                 ChartFactory.fbeOnTotalCategoryChart(current)));
         list.add(generateTab("Nationnalité par chaine",
                 ChartFactory.generateFbeChart(Arrays.asList(current))));
+        list.add(generateTab("Catégorie entertainment exploded",
+                ChartFactory.entertainmentExploded(current)));
         return list;
     }
 
@@ -127,6 +131,8 @@ public class CalendarController extends MainController {
                 ChartFactory.generateFbeChart(schedulers)));
         tabs.add(generateTab("Catégorie des émissions francophone",
                 ChartFactory.fbeAllChannelCategory(schedulers)));
+        tabs.add(generateTab("Entertaiment des émissions francophone",
+                ChartFactory.entertainmentExploded(schedulers)));
         return tabs;
     }
 
@@ -136,6 +142,8 @@ public class CalendarController extends MainController {
                 ChartFactory.generateNbeChart(schedulers)));
         tabs.add(generateTab("Catégorie des émissions néerlandophone",
                 ChartFactory.nbeAllChannelCategory(schedulers)));
+        tabs.add(generateTab("Entertaiment des émissions néerlandophone",
+                ChartFactory.entertainmentExploded(schedulers)));
         return tabs;
     }
 

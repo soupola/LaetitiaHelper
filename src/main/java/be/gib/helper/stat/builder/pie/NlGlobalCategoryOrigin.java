@@ -32,7 +32,7 @@ public class NlGlobalCategoryOrigin extends AbstractPieBuilder {
     public Node buildGraph(Scheduler scheduler) {
         Scheduler filtered = getCustomScheduler(getSchedulerWithoutVulling(scheduler));
         return super.generatePieChartCategory(
-                super.loadCategoryMap(filtered.getTimeSlots(), filtered.getTotalTime()),
+                super.loadFullCategoryMap(filtered.getTimeSlots(), filtered.getTotalTime()),
                 "NBE/nbe"
         );
     }
@@ -41,7 +41,7 @@ public class NlGlobalCategoryOrigin extends AbstractPieBuilder {
         Scheduler total = getSchedulerWithoutVulling(scheduler);
         Scheduler filtered = getCustomScheduler(total);
         return super.generatePieChartCategory(
-                super.loadCategoryMap(filtered.getTimeSlots(), total.getTotalTime()),
+                super.loadFullCategoryMap(filtered.getTimeSlots(), total.getTotalTime()),
                 "NBE/nbe total"
         );
     }

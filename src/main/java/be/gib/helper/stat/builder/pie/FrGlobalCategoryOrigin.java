@@ -32,7 +32,7 @@ public class FrGlobalCategoryOrigin extends AbstractPieBuilder {
     public Node buildGraph(Scheduler scheduler) {
         Scheduler filtered = getCustomScheduler(getSchedulerWithoutVulling(scheduler));
         return super.generatePieChartCategory(
-                super.loadCategoryMap(filtered.getTimeSlots(), filtered.getTotalTime()),
+                super.loadFullCategoryMap(filtered.getTimeSlots(), filtered.getTotalTime()),
                 "FBE/FBE"
         );
     }
@@ -41,7 +41,7 @@ public class FrGlobalCategoryOrigin extends AbstractPieBuilder {
         Scheduler schedulerWithoutVulling = getSchedulerWithoutVulling(scheduler);
         Scheduler filtered = getCustomScheduler(schedulerWithoutVulling);
         return super.generatePieChartCategory(
-                super.loadCategoryMap(filtered.getTimeSlots(), schedulerWithoutVulling.getTotalTime()),
+                super.loadFullCategoryMap(filtered.getTimeSlots(), schedulerWithoutVulling.getTotalTime()),
                 "FBE/nbe total"
         );
     }

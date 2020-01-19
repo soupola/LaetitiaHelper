@@ -56,4 +56,14 @@ public class ChartFactory {
         FrGlobalCategoryOrigin builder = new FrGlobalCategoryOrigin();
         return builder.buildGraph(schedulers);
     }
+
+    public static Node entertainmentExploded(Scheduler scheduler) {
+        EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
+        return builder.buildGraph(scheduler);
+    }
+
+    public static Node entertainmentExploded(List<Scheduler> schedulers) {
+        EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
+        return builder.buildGraph(schedulers);
+    }
 }

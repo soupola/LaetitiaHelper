@@ -8,11 +8,11 @@ import javafx.scene.Node;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CategoryPieBuilder extends AbstractPieBuilder {
+public class EntertainmentPieBuilder extends AbstractPieBuilder {
     @Override
     Scheduler getCustomScheduler(Scheduler scheduler) {
         List<TimeSlot> slots = scheduler.getTimeSlots().stream()
-                .filter(p -> EnumShowCategory.getCategory(p.getShow().getType()) != EnumShowCategory.VULLING)
+                .filter(p -> EnumShowCategory.ENTERTAINMENT.getTypes().contains(p.getShow().getType()))
                 .collect(Collectors.toList());
         Scheduler filteredScheduler = new Scheduler(slots, scheduler.getChaine());
         return filteredScheduler;
@@ -20,24 +20,18 @@ public class CategoryPieBuilder extends AbstractPieBuilder {
 
     @Override
     public Node buildGraph(Scheduler scheduler) {
-        return super.generatePieChartCategory(
-                super.loadFullCategoryMap(
-                        scheduler.getTimeSlots(),
-                        scheduler.getTotalTime()),
-                scheduler.getChaine().getName());
-    }
-
-    public Node buildGraphNoVulling(Scheduler scheduler) {
         Scheduler customScheduler = getCustomScheduler(scheduler);
-        return super.generatePieChartCategory(
-                super.loadFullCategoryMap(
+        return super.generatePieChartType(
+                super.loadSubTypeMap(EnumShowCategory.ENTERTAINMENT.getTypes(),
                         customScheduler.getTimeSlots(),
                         customScheduler.getTotalTime()),
-                scheduler.getChaine().getName());
+                "Détail entertainment"
+        );
     }
 
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
-        return null;
+        Scheduler merge = super.merge(schedulers);
+        return buildGraph(merge);
     }
 }
