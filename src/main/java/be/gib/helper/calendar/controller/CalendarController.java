@@ -5,6 +5,7 @@ import be.gib.helper.core.controller.MainController;
 import be.gib.helper.core.enums.EnumChaine;
 import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.stat.builder.ChartFactory;
+import be.gib.helper.stat.time.TimeExtractor;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
@@ -60,19 +61,20 @@ public class CalendarController extends MainController {
             }
             commonTabPane.getTabs().addAll(generateGlobalFr(filterByOrigin(EnumOrigine.FBE, getSchedulers())));
             commonTabPane.getTabs().addAll(generateGlobalNl(filterByOrigin(EnumOrigine.NBE, getSchedulers())));
+
         }
 
     }
 
     public ArrayList<Tab> LoadChannel(EnumChaine chaine, List<Scheduler> schedulers) {
-        ArrayList<Tab> tabs = new ArrayList<>();
         Scheduler scheduler = filterByName(chaine, schedulers);
-        tabs.addAll(generateCommon(scheduler));
+        ArrayList<Tab> tabs = new ArrayList<>(generateCommon(scheduler));
         if (chaine.getOrigine() == EnumOrigine.FBE) {
             tabs.addAll(generateFr(scheduler));
         } else {
             tabs.addAll(generateNl(scheduler));
         }
+        System.out.println(chaine.getName() + " : " + TimeExtractor.extractTimeWV(scheduler));
         return tabs;
     }
 
@@ -109,6 +111,8 @@ public class CalendarController extends MainController {
                 ChartFactory.generateNbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
                 ChartFactory.entertainmentExploded(current)));
+        list.add(generateTab("magazine des émissions flamandes",
+                ChartFactory.magazineExploded(current)));
         return list;
     }
 
@@ -122,6 +126,8 @@ public class CalendarController extends MainController {
                 ChartFactory.generateFbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
                 ChartFactory.entertainmentExploded(current)));
+        list.add(generateTab("magazine des émissions francophone",
+                ChartFactory.magazineExploded(current)));
         return list;
     }
 
@@ -133,6 +139,9 @@ public class CalendarController extends MainController {
                 ChartFactory.fbeAllChannelCategory(schedulers)));
         tabs.add(generateTab("Entertaiment des émissions francophone",
                 ChartFactory.entertainmentExploded(schedulers)));
+        tabs.add(generateTab("magazine des émissions francophone",
+                ChartFactory.magazineExploded(schedulers)));
+        System.out.println("FBE time: " + TimeExtractor.extractFbeTimeWV(schedulers));
         return tabs;
     }
 
@@ -144,6 +153,9 @@ public class CalendarController extends MainController {
                 ChartFactory.nbeAllChannelCategory(schedulers)));
         tabs.add(generateTab("Entertaiment des émissions néerlandophone",
                 ChartFactory.entertainmentExploded(schedulers)));
+        tabs.add(generateTab("magazine des émissions flamandes",
+                ChartFactory.magazineExploded(schedulers)));
+        System.out.println("NBE time: " + TimeExtractor.extractNbeTimeWV(schedulers));
         return tabs;
     }
 

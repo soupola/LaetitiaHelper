@@ -11,7 +11,7 @@ public enum EnumOrigine {
     ES("Epagnol", "ES"),
     FBE("FBE", "FBE"),
     FBE_FR("Franco-Belge francophone", "FBE/FR"),
-    FR("Francais", "FR"),
+    FR("FR", "FR"),
     FR_CA("Franco-Canadien", "FR/CA"),
     FR_FBE("Franco-Belge francophone", "FR/FBE"),
     FR_UK("Franco-Anglais", "FR/UK"),

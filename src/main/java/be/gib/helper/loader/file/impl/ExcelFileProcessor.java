@@ -46,7 +46,7 @@ public class ExcelFileProcessor extends FileProcessor {
             for (Row currentRow : currentSheet) {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < currentRow.getPhysicalNumberOfCells(); i++) {
-                    System.out.println(currentSheet.getSheetName() + " : " + currentRow.getCell(i).toString());
+//                    System.out.println(currentSheet.getSheetName() + " : " + currentRow.getCell(i).toString());
                     currentRow.getCell(i).setCellType(CellType.STRING);
                     sb.append(currentRow.getCell(i).getStringCellValue());
                     sb.append(";");
