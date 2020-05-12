@@ -2,6 +2,7 @@ package be.gib.helper.stat.builder.pie;
 
 import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.bean.TimeSlot;
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.core.enums.EnumShowCategory;
 import javafx.scene.Node;
 
@@ -27,6 +28,24 @@ public class EntertainmentPieBuilder extends AbstractPieBuilder {
                         customScheduler.getTotalTime()),
                 "Détail entertainment"
         );
+    }
+
+    public Node buildNlFiltered(List<Scheduler> scheduler) {
+        Scheduler merge = super.merge(scheduler);
+        return buildFiltered(merge, EnumOrigine.NBE);
+    }
+
+    public Node buildFrFiltered(List<Scheduler> scheduler) {
+        Scheduler merge = super.merge(scheduler);
+        return buildFiltered(merge, EnumOrigine.FBE);
+    }
+
+    private Node buildFiltered(Scheduler scheduler, EnumOrigine origine) {
+        List<TimeSlot> collect = scheduler.getTimeSlots().stream()
+                .filter(p -> p.getShow().getCountry() == origine)
+                .collect(Collectors.toList());
+        Scheduler filtered = new Scheduler(collect, null);
+        return buildGraph(filtered);
     }
 
     @Override

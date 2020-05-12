@@ -66,4 +66,14 @@ public class ChartFactory {
         EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
         return builder.buildGraph(schedulers);
     }
+
+    public static Node entertainmentNlExploded(List<Scheduler> schedulers) {
+        EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
+        return builder.buildNlFiltered(schedulers);
+    }
+
+    public static Node entertainmentFrExploded(List<Scheduler> schedulers) {
+        EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
+        return builder.buildFrFiltered(schedulers);
+    }
 }
