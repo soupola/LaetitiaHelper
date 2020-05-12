@@ -91,4 +91,15 @@ public static Node nbeOnTotalCategoryChart(Scheduler scheduler) {
         CategoryPieBuilder builder = new CategoryPieBuilder();
         return builder.buildGraphNoVulling(schedulers);
     }
+
+    public static Node magazineExploded(Scheduler scheduler) {
+        MagazinePieBuilder builder = new MagazinePieBuilder();
+        return builder.buildGraph(scheduler);
+    }
+
+    public static Node magazineExploded(List<Scheduler> schedulers) {
+        MagazinePieBuilder builder = new MagazinePieBuilder();
+        return builder.buildGraph(schedulers);
+    }
+
 }

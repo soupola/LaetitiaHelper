@@ -5,6 +5,7 @@ import be.gib.helper.core.controller.MainController;
 import be.gib.helper.core.enums.EnumChaine;
 import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.stat.builder.ChartFactory;
+import be.gib.helper.stat.time.TimeExtractor;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Tab;
@@ -75,6 +76,7 @@ public class CalendarController extends MainController {
         } else {
             tabs.addAll(generateNl(scheduler));
         }
+        System.out.println(chaine.getName() + " : " + TimeExtractor.extractTimeWV(scheduler));
         return tabs;
     }
 
@@ -111,6 +113,9 @@ public class CalendarController extends MainController {
                 ChartFactory.generateNbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
                 ChartFactory.entertainmentNlExploded(Collections.singletonList(current))));
+                ChartFactory.entertainmentExploded(current)));
+        list.add(generateTab("magazine des émissions flamandes",
+                ChartFactory.magazineExploded(current)));
         return list;
     }
 
@@ -124,6 +129,9 @@ public class CalendarController extends MainController {
                 ChartFactory.generateFbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
                 ChartFactory.entertainmentFrExploded(Collections.singletonList(current))));
+                ChartFactory.entertainmentExploded(current)));
+        list.add(generateTab("magazine des émissions francophone",
+                ChartFactory.magazineExploded(current)));
         return list;
     }
 
@@ -139,6 +147,10 @@ public class CalendarController extends MainController {
                 ChartFactory.globalFbe(schedulers)));
         tabs.add(generateTab("Total en catégorie sans vulling",
                 ChartFactory.globalCat(schedulers)));
+                ChartFactory.entertainmentExploded(schedulers)));
+        tabs.add(generateTab("magazine des émissions francophone",
+                ChartFactory.magazineExploded(schedulers)));
+        System.out.println("FBE time: " + TimeExtractor.extractFbeTimeWV(schedulers));
         return tabs;
     }
 
@@ -154,6 +166,10 @@ public class CalendarController extends MainController {
                 ChartFactory.globalNbe(schedulers)));
         tabs.add(generateTab("Total en catégorie sans vulling",
                 ChartFactory.globalCat(schedulers)));
+                ChartFactory.entertainmentExploded(schedulers)));
+        tabs.add(generateTab("magazine des émissions flamandes",
+                ChartFactory.magazineExploded(schedulers)));
+        System.out.println("NBE time: " + TimeExtractor.extractNbeTimeWV(schedulers));
         return tabs;
     }
 
