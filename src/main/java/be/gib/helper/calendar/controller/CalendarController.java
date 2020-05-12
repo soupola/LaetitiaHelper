@@ -112,7 +112,6 @@ public class CalendarController extends MainController {
         list.add(generateTab("Nationnalité par chaine",
                 ChartFactory.generateNbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
-                ChartFactory.entertainmentNlExploded(Collections.singletonList(current))));
                 ChartFactory.entertainmentExploded(current)));
         list.add(generateTab("magazine des émissions flamandes",
                 ChartFactory.magazineExploded(current)));
@@ -128,7 +127,6 @@ public class CalendarController extends MainController {
         list.add(generateTab("Nationnalité par chaine",
                 ChartFactory.generateFbeChart(Arrays.asList(current))));
         list.add(generateTab("Catégorie entertainment exploded",
-                ChartFactory.entertainmentFrExploded(Collections.singletonList(current))));
                 ChartFactory.entertainmentExploded(current)));
         list.add(generateTab("magazine des émissions francophone",
                 ChartFactory.magazineExploded(current)));
@@ -147,7 +145,6 @@ public class CalendarController extends MainController {
                 ChartFactory.globalFbe(schedulers)));
         tabs.add(generateTab("Total en catégorie sans vulling",
                 ChartFactory.globalCat(schedulers)));
-                ChartFactory.entertainmentExploded(schedulers)));
         tabs.add(generateTab("magazine des émissions francophone",
                 ChartFactory.magazineExploded(schedulers)));
         System.out.println("FBE time: " + TimeExtractor.extractFbeTimeWV(schedulers));
@@ -166,7 +163,6 @@ public class CalendarController extends MainController {
                 ChartFactory.globalNbe(schedulers)));
         tabs.add(generateTab("Total en catégorie sans vulling",
                 ChartFactory.globalCat(schedulers)));
-                ChartFactory.entertainmentExploded(schedulers)));
         tabs.add(generateTab("magazine des émissions flamandes",
                 ChartFactory.magazineExploded(schedulers)));
         System.out.println("NBE time: " + TimeExtractor.extractNbeTimeWV(schedulers));
