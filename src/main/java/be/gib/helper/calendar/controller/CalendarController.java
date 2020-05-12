@@ -33,7 +33,10 @@ public class CalendarController extends MainController {
     @FXML
     private TabPane ab3TabPane;
     @FXML
-    private TabPane commonTabPane;
+    private TabPane commonFr;
+    @FXML
+    private TabPane commonNl;
+
 
     @FXML
     void initialize() {
@@ -43,7 +46,6 @@ public class CalendarController extends MainController {
         assert uneTabPane != null : "fx:id=\"uneTabPane\" was not injected: check your FXML file 'calendarView.fxml'.";
         assert rtlTabPane != null : "fx:id=\"rtlTabPane\" was not injected: check your FXML file 'calendarView.fxml'.";
         assert ab3TabPane != null : "fx:id=\"ab3TabPane\" was not injected: check your FXML file 'calendarView.fxml'.";
-        assert commonTabPane != null : "fx:id=\"ab3TabPane\" was not injected: check your FXML file 'calendarView.fxml'.";
         setCalendarController(this);
         Map<EnumChaine, TabPane> map = new HashMap<>();
         map.put(EnumChaine.VTM, vtmTabPane);
@@ -58,8 +60,8 @@ public class CalendarController extends MainController {
             for (Map.Entry<EnumChaine, TabPane> entry : map.entrySet()) {
                 entry.getValue().getTabs().addAll(LoadChannel(entry.getKey(), getSchedulers()));
             }
-            commonTabPane.getTabs().addAll(generateGlobalFr(filterByOrigin(EnumOrigine.FBE, getSchedulers())));
-            commonTabPane.getTabs().addAll(generateGlobalNl(filterByOrigin(EnumOrigine.NBE, getSchedulers())));
+            commonFr.getTabs().addAll(generateGlobalFr(filterByOrigin(EnumOrigine.FBE, getSchedulers())));
+            commonNl.getTabs().addAll(generateGlobalNl(filterByOrigin(EnumOrigine.NBE, getSchedulers())));
         }
 
     }
@@ -133,6 +135,10 @@ public class CalendarController extends MainController {
                 ChartFactory.fbeAllChannelCategory(schedulers)));
         tabs.add(generateTab("Entertaiment des émissions francophone",
                 ChartFactory.entertainmentFrExploded(schedulers)));
+        tabs.add(generateTab("Catégorie des emissions francophone",
+                ChartFactory.globalFbe(schedulers)));
+        tabs.add(generateTab("Total en catégorie sans vulling",
+                ChartFactory.globalCat(schedulers)));
         return tabs;
     }
 
@@ -144,6 +150,10 @@ public class CalendarController extends MainController {
                 ChartFactory.nbeAllChannelCategory(schedulers)));
         tabs.add(generateTab("Entertaiment des émissions néerlandophone",
                 ChartFactory.entertainmentNlExploded(schedulers)));
+        tabs.add(generateTab("Catégorie des emissions néerlandophone",
+                ChartFactory.globalNbe(schedulers)));
+        tabs.add(generateTab("Total en catégorie sans vulling",
+                ChartFactory.globalCat(schedulers)));
         return tabs;
     }
 

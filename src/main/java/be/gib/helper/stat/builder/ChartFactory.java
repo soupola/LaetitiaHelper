@@ -42,10 +42,10 @@ public class ChartFactory {
         return builder.buildGraph(scheduler);
     }
 
-    public static Node nbeOnTotalCategoryChart(Scheduler scheduler) {
-        NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
-        return builder.buildGlobalGraph(scheduler);
-    }
+public static Node nbeOnTotalCategoryChart(Scheduler scheduler) {
+    NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
+    return builder.buildGlobalGraph(scheduler);
+}
 
     public static Node nbeAllChannelCategory(List<Scheduler> schedulers) {
         NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
@@ -75,5 +75,20 @@ public class ChartFactory {
     public static Node entertainmentFrExploded(List<Scheduler> schedulers) {
         EntertainmentPieBuilder builder = new EntertainmentPieBuilder();
         return builder.buildFrFiltered(schedulers);
+    }
+
+    public static Node globalFbe(List<Scheduler> schedulers) {
+        FrGlobalCategoryOrigin builder = new FrGlobalCategoryOrigin();
+        return builder.buildGlobalGraph(schedulers);
+    }
+
+    public static Node globalNbe(List<Scheduler> schedulers) {
+        NlGlobalCategoryOrigin builder = new NlGlobalCategoryOrigin();
+        return builder.buildGlobalGraph(schedulers);
+    }
+
+    public static Node globalCat(List<Scheduler> schedulers) {
+        CategoryPieBuilder builder = new CategoryPieBuilder();
+        return builder.buildGraphNoVulling(schedulers);
     }
 }

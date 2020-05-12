@@ -46,6 +46,16 @@ public class NlGlobalCategoryOrigin extends AbstractPieBuilder {
         );
     }
 
+    public Node buildGlobalGraph(List<Scheduler> schedulers) {
+        Scheduler merge = super.merge(schedulers);
+        Scheduler total = getSchedulerWithoutVulling(merge);
+        Scheduler filtered = getCustomScheduler(total);
+        return super.generatePieChartCategory(
+                super.loadFullCategoryMap(filtered.getTimeSlots(), total.getTotalTime()),
+                "NBE/nbe total"
+        );
+    }
+
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
         Scheduler merge = super.merge(schedulers);

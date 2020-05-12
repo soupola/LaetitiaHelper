@@ -46,6 +46,16 @@ public class FrGlobalCategoryOrigin extends AbstractPieBuilder {
         );
     }
 
+    public Node buildGlobalGraph(List<Scheduler> schedulers) {
+        Scheduler merge = super.merge(schedulers);
+        Scheduler schedulerWithoutVulling = getSchedulerWithoutVulling(merge);
+        Scheduler filtered = getCustomScheduler(schedulerWithoutVulling);
+        return super.generatePieChartCategory(
+                super.loadFullCategoryMap(filtered.getTimeSlots(), schedulerWithoutVulling.getTotalTime()),
+                "FBE/nbe total"
+        );
+    }
+
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
         Scheduler merge = super.merge(schedulers);

@@ -36,6 +36,16 @@ public class CategoryPieBuilder extends AbstractPieBuilder {
                 scheduler.getChaine().getName());
     }
 
+    public Node buildGraphNoVulling(List<Scheduler> schedulers) {
+        Scheduler merge = super.merge(schedulers);
+        Scheduler customScheduler = getCustomScheduler(merge);
+        return super.generatePieChartCategory(
+                super.loadFullCategoryMap(
+                        customScheduler.getTimeSlots(),
+                        customScheduler.getTotalTime()),
+                "catégorie total");
+    }
+
     @Override
     public Node buildGraph(List<Scheduler> schedulers) {
         return null;
