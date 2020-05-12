@@ -1,6 +1,7 @@
 package be.gib.helper.stat.builder;
 
 import be.gib.helper.core.bean.Scheduler;
+import be.gib.helper.core.enums.EnumOrigine;
 import be.gib.helper.stat.builder.pie.*;
 import javafx.scene.Node;
 
@@ -100,6 +101,11 @@ public static Node nbeOnTotalCategoryChart(Scheduler scheduler) {
     public static Node magazineExploded(List<Scheduler> schedulers) {
         MagazinePieBuilder builder = new MagazinePieBuilder();
         return builder.buildGraph(schedulers);
+    }
+
+    public static Node catForOrigine(List<Scheduler> schedulers, EnumOrigine origine) {
+        CategoryPieBuilder builder = new CategoryPieBuilder();
+        return builder.buildGraphNoVullingOrigine(schedulers, origine);
     }
 
 }

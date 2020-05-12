@@ -141,12 +141,14 @@ public class CalendarController extends MainController {
                 ChartFactory.fbeAllChannelCategory(schedulers)));
         tabs.add(generateTab("Entertaiment des émissions francophone",
                 ChartFactory.entertainmentFrExploded(schedulers)));
+        tabs.add(generateTab("magazine des émissions francophone",
+                ChartFactory.magazineExploded(schedulers)));
         tabs.add(generateTab("Catégorie des emissions francophone",
                 ChartFactory.globalFbe(schedulers)));
         tabs.add(generateTab("Total en catégorie sans vulling",
                 ChartFactory.globalCat(schedulers)));
-        tabs.add(generateTab("magazine des émissions francophone",
-                ChartFactory.magazineExploded(schedulers)));
+        tabs.add(generateTab("émissions francaises explosées",
+                ChartFactory.catForOrigine(schedulers, EnumOrigine.FR)));
         System.out.println("FBE time: " + TimeExtractor.extractFbeTimeWV(schedulers));
         return tabs;
     }
