@@ -20,6 +20,19 @@ public class FbePieBuilder extends AbstractPieBuilder {
         return filteredScheduler;
     }
 
+    public Node buildForCategorie(Scheduler scheduler, List<EnumShowCategory> categories) {
+        List<TimeSlot> slots = scheduler.getTimeSlots().stream()
+                .filter(p -> categories.contains(EnumShowCategory.getCategory(p.getShow().getType())))
+                .collect(Collectors.toList());
+        Scheduler filteredScheduler = new Scheduler(slots, scheduler.getChaine());
+        List<EnumOrigine> origines = Arrays.asList(EnumOrigine.FBE, EnumOrigine.FR);
+        return super.generateOriginPieChart(
+                super.loadMapOrigine(filteredScheduler.getTimeSlots(),
+                        filteredScheduler.getTotalTime(),
+                        origines),
+                "nationalite entertainment");
+    }
+
     @Override
     public Node buildGraph(Scheduler scheduler) {
         return null;

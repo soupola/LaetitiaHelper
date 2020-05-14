@@ -4,6 +4,7 @@ import be.gib.helper.core.bean.Scheduler;
 import be.gib.helper.core.controller.MainController;
 import be.gib.helper.core.enums.EnumChaine;
 import be.gib.helper.core.enums.EnumOrigine;
+import be.gib.helper.core.enums.EnumShowCategory;
 import be.gib.helper.stat.builder.ChartFactory;
 import be.gib.helper.stat.time.TimeExtractor;
 import javafx.fxml.FXML;
@@ -130,6 +131,8 @@ public class CalendarController extends MainController {
                 ChartFactory.entertainmentExploded(current)));
         list.add(generateTab("magazine des émissions francophone",
                 ChartFactory.magazineExploded(current)));
+        list.add(generateTab("nationalite entertainment",
+                ChartFactory.fbeNatEntertainment(current, Collections.singletonList(EnumShowCategory.ENTERTAINMENT))));
         return list;
     }
 
